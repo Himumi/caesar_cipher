@@ -30,5 +30,24 @@ def caesar_cipher(string, number, direction)
   string.join
 end
 
-puts caesar_cipher("Hi, World!", 1, "left")
-puts caesar_cipher("Hi, World!", 1, "right")
+puts caesar_cipher("Hai, World!", 1, "left")
+puts caesar_cipher("Hai, World!", 1, "right")
+
+def caesar_cipher_ord(string, number)
+  string = string.split("").map do |item|
+    if (65..90).include?(item.ord)
+      shifted = item.ord - number
+      shifted = 90 - (64 - shifted) if shifted < 65
+      item = shifted.chr
+    elsif (97..122).include?(item.ord)
+      shifted = item.ord - number
+      shifted = 122 - (96 - shifted) if shifted < 97
+      item = shifted.chr
+    else
+      item
+    end
+  end
+  string.join
+end
+
+puts caesar_cipher_ord("Hai, World!", 1)
