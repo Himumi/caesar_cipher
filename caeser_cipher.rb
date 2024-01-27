@@ -29,7 +29,7 @@ def caesar_cipher(string, number, direction = "left")
 end
 
 puts caesar_cipher("Hai, World!", 10)
-puts caesar_cipher("Hai, World!", 1, "right")
+puts caesar_cipher("Hai, World!", 10, "right")
 
 def caesar_cipher_ord(string, number, direction = "left")
   direction = direction.downcase
@@ -49,11 +49,11 @@ def caesar_cipher_ord(string, number, direction = "left")
     elsif direction == "right"
       if (65..90).include?(item.ord)
         shifted = item.ord + number
-        shifted = 65 + (91 - shifted) if shifted > 90
+        shifted = 65 + (shifted - 91) if shifted > 90
         item = shifted.chr
       elsif (97..122).include?(item.ord)
         shifted = item.ord + number
-        shifted = 97 + (123 - shifted) if shifted > 122
+        shifted = 97 + (shifted - 123) if shifted > 122
         item = shifted.chr
       else
         item
@@ -64,4 +64,4 @@ def caesar_cipher_ord(string, number, direction = "left")
 end
 
 puts caesar_cipher_ord("Hai, World!", 10)
-puts caesar_cipher_ord("zZ", 1, "right")
+puts caesar_cipher_ord("zZ", 10, "right")
