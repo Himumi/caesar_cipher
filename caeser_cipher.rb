@@ -1,4 +1,4 @@
-def caesar_cipher(string, number, direction)
+def caesar_cipher(string, number, direction = "left")
   arr = [("A".."Z").to_a, ("a".."z").to_a]
   direction = direction.downcase
 
@@ -28,10 +28,10 @@ def caesar_cipher(string, number, direction)
   string.join
 end
 
-puts caesar_cipher("Hai, World!", 1, "left")
+puts caesar_cipher("Hai, World!", 10)
 puts caesar_cipher("Hai, World!", 1, "right")
 
-def caesar_cipher_ord(string, number, direction)
+def caesar_cipher_ord(string, number, direction = "left")
   direction = direction.downcase
   string = string.split("").map do |item|
     if direction == "left"
@@ -63,5 +63,5 @@ def caesar_cipher_ord(string, number, direction)
   string.join
 end
 
-puts caesar_cipher_ord("Hai, World!", 1, "right")
+puts caesar_cipher_ord("Hai, World!", 10)
 puts caesar_cipher_ord("zZ", 1, "right")
