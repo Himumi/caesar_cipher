@@ -1,9 +1,8 @@
 def caesar_cipher(string, number, direction = "left")
   arr = [("A".."Z").to_a, ("a".."z").to_a]
-  direction = direction.downcase
 
   string = string.split("").map! do |item|
-    if direction == "left"
+    if direction.downcase == "left"
       if arr[0].include?(item)
         index = arr[0].find_index(item) - number
         item = arr[0][index]
@@ -13,7 +12,7 @@ def caesar_cipher(string, number, direction = "left")
       else
         item
       end
-    elsif direction == "right"
+    elsif direction.downcase == "right"
       if arr[0].include?(item)
         index = arr[0].reverse.find_index(item) - number
         item = arr[0].reverse[index]
@@ -32,9 +31,8 @@ puts caesar_cipher("Hai, World!", 10)
 puts caesar_cipher("Hai, World!", 10, "right")
 
 def caesar_cipher_ord(string, number, direction = "left")
-  direction = direction.downcase
   string = string.split("").map do |item|
-    if direction == "left"
+    if direction.downcase == "left"
       if (65..90).include?(item.ord)
         shifted = item.ord - number
         shifted = 90 - (64 - shifted) if shifted < 65
@@ -46,7 +44,7 @@ def caesar_cipher_ord(string, number, direction = "left")
       else
         item
       end
-    elsif direction == "right"
+    elsif direction.downcase == "right"
       if (65..90).include?(item.ord)
         shifted = item.ord + number
         shifted = 65 + (shifted - 91) if shifted > 90
